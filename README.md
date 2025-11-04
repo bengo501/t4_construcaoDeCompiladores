@@ -173,11 +173,6 @@ print(gc.get_codigo())
 - `refsTexto/18-Processor-Architectures.txt`: arquiteturas de processadores
 - `refsTexto/x64_cheatsheet.txt`: referência de instruções x64
 
-## autor
-
-implementação realizada para a tarefa 4 (t4) de construção de compiladores.
-
-## status
 
 todos os testes passaram (10/10) ✓
 
