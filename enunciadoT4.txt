@@ -1,0 +1,19 @@
+Tarefa 4 (final) Exercício prático de geração de código
+Entrega e apresentação - 17 de novembro
+Exercicio pode ser realizado individualmente ou em grupo de até 4 alunos
+Para cada exercício realizado apresentar pelo menos um arquivo de teste, fazer programas pequenos que vão introduzindo os novos itens implementados
+
+O que fazer...
+    Alterar o exemplo de geração de código visto em aula para gerar código para as seguintes estruturas (9,0 pontos):
+        transformar comando de atribuição em uma expressão de atribuição
+        adicionar expressões de pós e pré incremento/decremento
+        adicionar o operador "+="
+        adicionar o operador condicional - *?"
+        adicionar um comando do-while
+        adicionar o comando for (lembre que as 3 expressões do for podem ser vazias)
+        adicionar comandos break e continue
+        Adicionar ao código exemplo a possibilidade de usar variáveis do tipo struct (2,0 pontos)
+    
+    Tarefas bonus 1 ponto (adicional) na nota de trabalhos da disciplina para cada itern abaixo se o aluno tiver nota 10,0 de trabalhos adiciona um ponto cada item na nota da prova P3
+        gerar código (declaração e expressões) para arrays de inteiros
+        permitir criar array de structs ou structs que tenham um array como campo da struct
