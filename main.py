@@ -2,6 +2,9 @@
 arquivo principal - demonstra todas as funcionalidades implementadas
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(__file__))
 from exemplos_teste import *
 
 if __name__ == "__main__":

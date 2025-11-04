@@ -3,6 +3,15 @@ exemplos de teste para cada funcionalidade
 cada função gera código de exemplo para uma funcionalidade específica
 """
 
+import sys
+import os
+# ajusta o path dependendo de onde está o arquivo
+if os.path.exists('src/gerador_codigo.py'):
+    sys.path.insert(0, 'src')
+elif os.path.exists('../src/gerador_codigo.py'):
+    sys.path.insert(0, '../src')
+else:
+    sys.path.insert(0, '.')
 from gerador_codigo import GeradorCodigo
 
 def teste_01_expressao_atribuicao():

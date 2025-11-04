@@ -3,6 +3,15 @@ teste 10: struct com array (bonus)
 permitir criar structs que tenham um array como campo da struct
 """
 
+import sys
+import os
+# ajusta o path dependendo de onde está o arquivo
+if os.path.exists('src/gerador_codigo.py'):
+    sys.path.insert(0, 'src')
+elif os.path.exists('../src/gerador_codigo.py'):
+    sys.path.insert(0, '../src')
+else:
+    sys.path.insert(0, '.')
 from gerador_codigo import GeradorCodigo
 
 def gerar_teste():
@@ -79,4 +88,5 @@ if __name__ == "__main__":
     print()
     print("codigo gerado:")
     print(gerar_teste())
+
 

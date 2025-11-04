@@ -2,53 +2,6 @@
 
 implementação de um gerador de código para máquina de pilha baseado nos exemplos vistos em aula e nas referências fornecidas.
 
-## estrutura do projeto
-
-```
-t4_construcaoDeCompiladores/
-├── src/                    # código fonte
-│   └── gerador_codigo.py  # implementação principal
-├── testes/                # testes automatizados
-│   ├── testar.py          # testes automatizados completos
-│   ├── executar_todos_testes.py  # executa todos os testes
-│   └── teste_*.py         # testes individuais (10 arquivos)
-├── exemplos/              # exemplos de uso
-│   ├── exemplo_uso.py     # exemplos detalhados
-│   ├── exemplos_teste.py  # funções de teste
-│   └── main.py            # demonstração completa
-├── docs/                  # documentação
-│   ├── README.md          # este arquivo
-│   ├── COMO_TESTAR.md     # guia de testes
-│   ├── TESTE_RAPIDO.md    # guia rápido
-│   ├── README_TESTES.md   # documentação dos testes
-│   └── teste_*.txt        # exemplos documentados (10 arquivos)
-├── output/                # saída gerada (opcional)
-├── COMANDOS.md            # todos os comandos para executar
-└── enunciadoT4.txt        # enunciado da tarefa
-```
-
-## início rápido
-
-### executar testes automatizados
-
-```bash
-python testes/testar.py
-```
-
-### ver demonstração completa
-
-```bash
-python exemplos/main.py
-```
-
-### executar um teste específico
-
-```bash
-python testes/teste_01_expressao_atribuicao.py
-```
-
-para mais comandos, veja [COMANDOS.md](COMANDOS.md)
-
 ## funcionalidades implementadas (9,0 pontos)
 
 1. **expressão de atribuição**: transformar comando de atribuição em expressão de atribuição
@@ -91,32 +44,12 @@ para mais comandos, veja [COMANDOS.md](COMANDOS.md)
     - struct pode conter array como campo
     - acesso: `p.scores[0] := 100;`
 
-## uso básico
+## arquivos
 
-```python
-import sys
-sys.path.append('src')
-from gerador_codigo import GeradorCodigo
-
-# cria um novo gerador
-gc = GeradorCodigo()
-
-# inicia o programa
-gc.inicio_programa()
-
-# declara variáveis
-gc.declarar_variavel("x", "integer", 4)
-
-# gera código de exemplo
-gc.ldc(5)
-gc.expressao_atribuicao("x")
-
-# finaliza o programa
-gc.fim_programa()
-
-# exibe o código gerado
-print(gc.get_codigo())
-```
+- `gerador_codigo.py`: implementação principal do gerador de código
+- `exemplos_teste.py`: exemplos de uso para cada funcionalidade
+- `exemplo_uso.py`: exemplos adicionais de uso
+- `teste_01_expressao_atribuicao.txt` até `teste_10_struct_com_array.txt`: arquivos de teste documentando cada funcionalidade
 
 ## instruções da máquina de pilha
 
@@ -158,12 +91,30 @@ print(gc.get_codigo())
 - `NOP`: não faz nada (usado como rótulo)
 - `HALT`: para execução
 
-## documentação
+## uso
 
-- [COMANDOS.md](COMANDOS.md) - todos os comandos para executar
-- [docs/COMO_TESTAR.md](docs/COMO_TESTAR.md) - guia detalhado de como testar
-- [docs/TESTE_RAPIDO.md](docs/TESTE_RAPIDO.md) - guia rápido de teste
-- [docs/README_TESTES.md](docs/README_TESTES.md) - documentação dos testes individuais
+```python
+from gerador_codigo import GeradorCodigo
+
+gc = GeradorCodigo()
+gc.inicio_programa()
+
+# declara variáveis
+gc.declarar_variavel("x", "integer", 4)
+
+# gera código
+gc.ldc(5)
+gc.expressao_atribuicao("x")
+
+gc.fim_programa()
+print(gc.get_codigo())
+```
+
+## executar exemplos
+
+```bash
+python exemplos_teste.py
+```
 
 ## referências
 
@@ -172,12 +123,4 @@ print(gc.get_codigo())
 - `refsTexto/16-Intermediate-Representation.txt`: representação intermediária
 - `refsTexto/18-Processor-Architectures.txt`: arquiteturas de processadores
 - `refsTexto/x64_cheatsheet.txt`: referência de instruções x64
-
-## autor
-
-implementação realizada para a tarefa 4 (t4) de construção de compiladores.
-
-## status
-
-todos os testes passaram (10/10) ✓
 

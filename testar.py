@@ -2,6 +2,15 @@
 script de teste completo - verifica todas as funcionalidades
 """
 
+import sys
+import os
+# ajusta o path dependendo de onde está o arquivo
+if os.path.exists('src/gerador_codigo.py'):
+    sys.path.insert(0, 'src')
+elif os.path.exists('../src/gerador_codigo.py'):
+    sys.path.insert(0, '../src')
+else:
+    sys.path.insert(0, '.')
 from gerador_codigo import GeradorCodigo
 
 def testar_expressao_atribuicao():
