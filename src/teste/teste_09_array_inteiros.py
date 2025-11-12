@@ -11,9 +11,20 @@ def gerar_teste():#gera codigo de teste para arrays de inteiros
     
     gc.declarar_variavel("x", "integer", 4) #declara variavel x do tipo integer
     
+    # arr[0] := 10
     gc.ldc(0) #carrega o valor 0
     gc.ldc(10) #carrega o valor 10
     gc.atribuir_array_elemento("arr") #atribui o valor 10 ao array arr
+    
+    # arr[2] := 20
+    gc.ldc(2)  # índice
+    gc.ldc(20) # valor
+    gc.atribuir_array_elemento("arr")
+    
+    # x := arr[2]
+    gc.ldc(2)  # índice
+    gc.carregar_array_elemento("arr")
+    gc.atribuir_variavel("x")
     
     gc.fim_programa()
     return gc.get_codigo()
