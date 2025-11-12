@@ -1,34 +1,19 @@
-"""
-teste 1: expressão de atribuição
-transformar comando de atribuição em expressão de atribuição
-"""
-
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+#teste 1 expressão de atribuição
+#transformar comando de atribuição em expressão de atribuição
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para expressão de atribuição"""
+def gerar_teste():#gera codigo de teste para expressão de atribuição
     gc = GeradorCodigo()
     gc.inicio_programa()
     
-    # declara variáveis
-    gc.declarar_variavel("x", "integer", 4)
+    gc.declarar_variavel("x", "integer", 4)   # declara vars
     gc.declarar_variavel("y", "integer", 4)
     
-    # x := 5 (expressão de atribuição)
-    gc.ldc(5)
+    gc.ldc(5)    # x := 5 (expressao de atribuicao)
     gc.expressao_atribuicao("x")
     
-    # y := x := 5 (cadeia de atribuições)
-    gc.expressao_atribuicao("y")
+    gc.expressao_atribuicao("y")# y := x := 5 (cadeia de atribuicoes)
     
     gc.fim_programa()
     return gc.get_codigo()

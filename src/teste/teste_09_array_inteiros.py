@@ -1,43 +1,19 @@
-"""
-teste 9: arrays de inteiros (bonus)
-gerar código (declaração e expressões) para arrays de inteiros
-"""
-
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+#teste 9: arrays de inteiros (bonus)
+#gerar código (declaração e expressões) para arrays de inteiros
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para arrays de inteiros"""
+def gerar_teste():#gera codigo de teste para arrays de inteiros
     gc = GeradorCodigo()
     gc.inicio_programa()
     
-    # declara array de 5 inteiros
-    gc.declarar_array("arr", "integer", 4, 5)
+    gc.declarar_array("arr", "integer", 4, 5) #declara a array de 5 inteiros
     
-    gc.declarar_variavel("x", "integer", 4)
+    gc.declarar_variavel("x", "integer", 4) #declara variavel x do tipo integer
     
-    # arr[0] := 10
-    gc.ldc(0)  # índice
-    gc.ldc(10)  # valor
-    gc.atribuir_array_elemento("arr")
-    
-    # arr[2] := 20
-    gc.ldc(2)  # índice
-    gc.ldc(20)  # valor
-    gc.atribuir_array_elemento("arr")
-    
-    # x := arr[2]
-    gc.ldc(2)  # índice
-    gc.carregar_array_elemento("arr")
-    gc.atribuir_variavel("x")
+    gc.ldc(0) #carrega o valor 0
+    gc.ldc(10) #carrega o valor 10
+    gc.atribuir_array_elemento("arr") #atribui o valor 10 ao array arr
     
     gc.fim_programa()
     return gc.get_codigo()

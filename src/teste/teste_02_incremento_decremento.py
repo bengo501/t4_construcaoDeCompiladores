@@ -1,47 +1,32 @@
-"""
-teste 2: incremento e decremento
-expressões de pós e pré incremento/decremento
-"""
+#teste 2 incremento e decremento
+#expressões de pós e pré incremento/decremento
 
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para incremento e decremento"""
+def gerar_teste():#gera código de teste para incremento e decremento
     gc = GeradorCodigo()
     gc.inicio_programa()
     
-    # declara variáveis
-    gc.declarar_variavel("a", "integer", 4)
+    gc.declarar_variavel("a", "integer", 4)  # declara variaveis
     gc.declarar_variavel("b", "integer", 4)
     
-    # inicializa
-    gc.ldc(0)
+    gc.ldc(0)    # inicializa variaveis
     gc.atribuir_variavel("a")
     gc.ldc(0)
     gc.atribuir_variavel("b")
     
-    # pré-incremento: ++a
-    gc.pre_incremento("a")
+    gc.pre_incremento("a")# pre-incremento: ++a
     gc.drop()  # descarta valor retornado
     
-    # pós-incremento: b++
-    gc.pos_incremento("b")
+    gc.pos_incremento("b")  # pos-incremento: b++
     gc.drop()  # descarta valor retornado
     
-    # pré-decremento: --a
+    # pre-decremento: --a
     gc.pre_decremento("a")
     gc.drop()
     
-    # pós-decremento: b--
+    # pos-decremento: b--
     gc.pos_decremento("b")
     gc.drop()
     

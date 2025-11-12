@@ -1,13 +1,5 @@
 #script de teste completo - verifica todas as funcionalidades
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'): #verifica se o arquivo gerador_codigo.py existe no diretório src
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'): #verifica se o arquivo gerador_codigo.py existe no diretório ../src
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.') #adiciona o diretório atual ao path
+import _import_helper # import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo #importa o módulo gerador_codigo
 #---------------------------------------------------------------------------------------------------------
 def testar_expressao_atribuicao():    #testa expressão de atribuição

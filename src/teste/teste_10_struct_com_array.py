@@ -1,50 +1,34 @@
-"""
-teste 10: struct com array (bonus)
-permitir criar structs que tenham um array como campo da struct
-"""
-
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+#teste 10: struct com array (bonus)
+#permitir criar structs que tenham um array como campo da struct
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para struct com array"""
+def gerar_teste():#gera codigo de teste para struct com array
     gc = GeradorCodigo()
     gc.inicio_programa()
     
-    # declara struct que contém array
+    #declara a struct Pessoa com campos idade e scores
     gc.declarar_struct("Pessoa", [
         ("idade", "integer", 4),
         ("scores", "array[3]", 12)  # array de 3 inteiros
-    ])
+    ]) #declara a struct Pessoa
+    gc.declarar_variavel_struct("p", "Pessoa") #declara a variável p do tipo Pessoa
     
-    # declara variável do tipo Pessoa
-    gc.declarar_variavel_struct("p", "Pessoa")
+    gc.ldc(25) #carrega o valor 25
+    gc.carregar_variavel("p") #carrega a variável p
+    gc.ldc(0) #carrega o valor 0
+    gc.add() #adiciona o valor 0 ao valor 25
+    gc.emitir("STI") #emite a instrução STI
     
-    # p.idade := 25
-    gc.ldc(25)
-    gc.carregar_variavel("p")
-    gc.ldc(0)  # offset do campo idade
-    gc.add()
-    gc.emitir("STI")
-    
-    # p.scores[0] := 100
-    gc.ldc(100)
-    gc.carregar_variavel("p")
-    gc.ldc(4)  # offset base do array scores
-    gc.add()
-    gc.ldc(0)  # índice 0
-    gc.ldc(4)  # tamanho do elemento
-    gc.mul()
-    gc.add()
-    gc.emitir("STI")
+    gc.ldc(100) #carrega o valor 100
+    gc.carregar_variavel("p") #carrega a variável p
+    gc.ldc(4) #carrega o valor 4
+    gc.add() #adiciona o valor 4 ao valor 100
+    gc.ldc(0) #carrega o valor 0
+    gc.ldc(4) #carrega o valor 4
+    gc.mul() #multiplica o valor 4 pelo valor 0
+    gc.add() #adiciona o valor 4 ao valor 0
+    gc.emitir("STI") #emite a instrução STI
     
     # p.scores[1] := 90
     gc.ldc(90)

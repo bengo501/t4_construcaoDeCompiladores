@@ -1,56 +1,34 @@
-"""
-teste 7: comandos break e continue
-adicionar comandos break e continue
-"""
-
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+#teste 7: comandos break e continue
+#adicionar comandos break e continue
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para comandos break e continue"""
+def gerar_teste():#gera codigo de teste para comandos break e continue
     gc = GeradorCodigo()
     gc.inicio_programa()
     
-    # declara variável
+    gc.declarar_variavel("i", "integer", 4) # declara var   
     gc.declarar_variavel("i", "integer", 4)
-    
-    # inicializa i
-    gc.ldc(0)
+    gc.ldc(0) # inicializa i
     gc.atribuir_variavel("i")
-    
-    # while (i < 10)
-    rotulo_inicio, rotulo_fim = gc.inicio_while()
-    
-    gc.carregar_variavel("i")
-    gc.ldc(10)
-    gc.les()
-    gc.jzer(rotulo_fim)
-    
-    gc.pos_incremento("i")
-    gc.drop()
-    
-    # if (i == 5) continue
-    gc.carregar_variavel("i")
-    gc.ldc(5)
-    gc.eq()
-    rotulo_else1, rotulo_fim1 = gc.inicio_if()
-    gc.jzer(rotulo_else1)
-    gc.continue_cmd()
-    gc.fim_if()
-    
-    # if (i == 8) break
-    gc.carregar_variavel("i")
-    gc.ldc(8)
-    gc.eq()
-    rotulo_else2, rotulo_fim2 = gc.inicio_if()
+    rotulo_inicio, rotulo_fim = gc.inicio_while() # inicio do while
+    gc.carregar_variavel("i") # i
+    gc.ldc(10) # 10
+    gc.les() # i < 10 (condicao)
+    gc.jzer(rotulo_fim) # se falso, pula para fim
+    gc.pos_incremento("i") # i++
+    gc.drop() # descarta valor retornado
+    gc.carregar_variavel("i") # i
+    gc.ldc(5) # 5
+    gc.eq() # i == 5 (condicao)
+    rotulo_else1, rotulo_fim1 = gc.inicio_if() # inicio do if
+    gc.jzer(rotulo_else1) # se falso, pula para else
+    gc.continue_cmd() # continue
+    gc.fim_if() # fim do if
+    gc.carregar_variavel("i") # i
+    gc.ldc(8) # 8
+    gc.eq() # i == 8 (condicao)
+    rotulo_else2, rotulo_fim2 = gc.inicio_if() # inicio do if
     gc.jzer(rotulo_else2)
     gc.break_cmd()
     gc.fim_if()

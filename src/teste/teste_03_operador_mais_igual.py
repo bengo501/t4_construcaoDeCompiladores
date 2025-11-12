@@ -1,33 +1,18 @@
-"""
-teste 3: operador +=
-adicionar o operador "+="
-"""
-
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+#teste 3: operador +=
+#adicionar o operador "+="
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para operador +="""
+def gerar_teste():#gera codigo de teste para operador +=
     gc = GeradorCodigo()
     gc.inicio_programa()
     
-    # declara variável
-    gc.declarar_variavel("x", "integer", 4)
+    gc.declarar_variavel("x", "integer", 4) # declara var
     
-    # inicializa x
-    gc.ldc(10)
+    gc.ldc(10) # inicializa x
     gc.atribuir_variavel("x")
     
-    # x += 5
-    gc.ldc(5)
+    gc.ldc(5) # x += 5
     gc.atribuicao_adicao("x")
     gc.drop()  # descarta valor retornado
     

@@ -1,38 +1,24 @@
-"""
-teste 4: operador condicional ?:
-adicionar o operador condicional "?:"
-"""
+#teste 4: operador condicional ?:
+#adicionar o operador condicional "?:"
 
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para operador condicional ?:"""
+def gerar_teste():#gera codigo de teste para operador condicional ?:
     gc = GeradorCodigo()
     gc.inicio_programa()
     
-    # declara variáveis
-    gc.declarar_variavel("x", "integer", 4)
+    gc.declarar_variavel("x", "integer", 4) # declara vars x, y e z
     gc.declarar_variavel("y", "integer", 4)
     gc.declarar_variavel("z", "integer", 4)
     
-    # inicializa
-    gc.ldc(10)
+    gc.ldc(10) # inicializa x
     gc.atribuir_variavel("x")
-    gc.ldc(5)
+    gc.ldc(5) # inicializa y    
     gc.atribuir_variavel("y")
     
-    # z := x > y ? x : y
-    gc.carregar_variavel("x")
-    gc.carregar_variavel("y")
+    gc.carregar_variavel("x")# x > y ? x : y (expressao condicional)
+    gc.carregar_variavel("y") # x > y (condicao) 
     gc.grt()  # x > y
     
     rotulo_else = gc.ts.novo_rotulo_cod()
@@ -45,7 +31,7 @@ def gerar_teste():
     gc.carregar_variavel("y")  # exp3
     gc.emitir_rotulo(rotulo_fim)
     
-    gc.atribuir_variavel("z")
+    gc.atribuir_variavel("z") # z := x > y ? x : y (expressao condicional)
     
     gc.fim_programa()
     return gc.get_codigo()

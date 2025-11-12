@@ -1,50 +1,22 @@
-"""
-teste 6: comando for
-adicionar o comando for (as 3 expressões do for podem ser vazias)
-"""
-
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+#teste 6: comando for
+#adicionar o comando for (as 3 expressões do for podem ser vazias)
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para comando for"""
-    gc = GeradorCodigo()
+def gerar_teste():#gera codigo de teste para comando for
+    gc = GeradorCodigo() 
     gc.inicio_programa()
     
-    # declara variável
-    gc.declarar_variavel("i", "integer", 4)
-    
-    # for (i := 0; i < 10; i++)
-    # expressão inicial: i := 0
-    gc.ldc(0)
+    gc.declarar_variavel("i", "integer", 4) # declara var
+    gc.ldc(0) # inicializa i
     gc.atribuir_variavel("i")
-    
-    rotulo_teste, rotulo_incremento, rotulo_fim = gc.inicio_for()
-    
-    # teste: i < 10
-    gc.carregar_variavel("i")
-    gc.ldc(10)
-    gc.les()
-    gc.teste_for()
-    
-    # corpo do loop (vazio neste exemplo)
-    
-    # incremento: i++
-    gc.carregar_variavel("i")
-    gc.ldc(1)
-    gc.add()
-    gc.atribuir_variavel("i")
-    
-    gc.fim_for()
-    
+    gc.inicio_for() # inicio do for 
+    gc.carregar_variavel("i") # i
+    gc.ldc(10) # 10
+    gc.les()  # i < 10 (condicao)
+    gc.teste_for() # teste do for (corpo do loop)
+    gc.pos_incremento("i") # i++
+    gc.fim_for() # fim do for
     gc.fim_programa()
     return gc.get_codigo()
 

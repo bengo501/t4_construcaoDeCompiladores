@@ -1,46 +1,28 @@
-"""
-teste 8: variáveis do tipo struct
-adicionar possibilidade de usar variáveis do tipo struct
-"""
-
-import sys
-import os
-# ajusta o path dependendo de onde está o arquivo
-if os.path.exists('src/gerador_codigo.py'):
-    sys.path.insert(0, 'src')
-elif os.path.exists('../src/gerador_codigo.py'):
-    sys.path.insert(0, '../src')
-else:
-    sys.path.insert(0, '.')
+#teste 8: variáveis do tipo struct
+#adicionar possibilidade de usar variáveis do tipo struct
+import _import_helper# import helper que configura o path corretamente
 from gerador_codigo import GeradorCodigo
 
-def gerar_teste():
-    """gera código de teste para variáveis do tipo struct"""
+def gerar_teste():#gera codigo de teste para variáveis do tipo struct
     gc = GeradorCodigo()
     gc.inicio_programa()
     
-    # declara struct Ponto
-    gc.declarar_struct("Ponto", [
+    gc.declarar_struct("Ponto", [ #declara a struct Ponto
         ("x", "integer", 4),
         ("y", "integer", 4)
-    ])
+    ]) #declara a struct Ponto
+    gc.declarar_struct("Ponto2", [ #declara a struct Ponto2 com campos x2 e y2
+        ("x2", "integer", 4),
+        ("y2", "integer", 4)
+    ]) #declara a struct Ponto2
     
-    # declara variável do tipo Ponto
-    gc.declarar_variavel_struct("p", "Ponto")
+    gc.declarar_variavel_struct("p", "Ponto") #declara a variável p do tipo Ponto   
     
-    # p.x := 10
-    gc.ldc(10)
-    gc.carregar_variavel("p")
-    gc.ldc(0)  # offset do campo x
-    gc.add()
-    gc.emitir("STI")
-    
-    # p.y := 20
-    gc.ldc(20)
-    gc.carregar_variavel("p")
-    gc.ldc(4)  # offset do campo y
-    gc.add()
-    gc.emitir("STI")
+    gc.ldc(10) #carrega o valor 10
+    gc.carregar_variavel("p") #carrega a variável p
+    gc.ldc(0) #carrega o valor 0
+    gc.add() #adição
+    gc.emitir("STI") #emite a instrução STI
     
     gc.fim_programa()
     return gc.get_codigo()
