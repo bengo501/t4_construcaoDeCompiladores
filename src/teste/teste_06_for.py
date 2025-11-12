@@ -15,7 +15,11 @@ def gerar_teste():#gera codigo de teste para comando for
     gc.ldc(10) # 10
     gc.les()  # i < 10 (condicao)
     gc.teste_for() # teste do for (corpo do loop)
-    gc.pos_incremento("i") # i++
+    # incremento: i++
+    gc.carregar_variavel("i") # i
+    gc.ldc(1) # 1
+    gc.add() # i + 1
+    gc.atribuir_variavel("i") # i := i + 1
     gc.fim_for() # fim do for
     gc.fim_programa()
     return gc.get_codigo()
