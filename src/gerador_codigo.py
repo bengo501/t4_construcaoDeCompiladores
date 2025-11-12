@@ -507,20 +507,3 @@ class GeradorCodigo: #gerador de código para máquina de pilha
         self.emitir_rotulo("_start")
         self.emitir("HALT")
 
-#------------------------------------------------------------------------------------------------
-# ============================== instruções auxiliares necessárias ==============================
-INSTRUCOES_AUXILIARES = """
-instruções adicionais necessárias:
-- DUP: duplica topo da pilha
-- LDI: carrega indiretamente (desempilha endereço, empilha valor no endereço)
-- STI: armazena indiretamente (desempilha valor e endereço, armazena valor no endereço)
-- LDO offset: carrega de BP+offset (para campos de struct)
-- STO offset: armazena em BP+offset (para campos de struct)
-- NE: não igual
-- GEQ: maior ou igual
-- LEQ: menor ou igual
-- JNZ: jump se não zero
-- HALT: para execução
-"""
-
-

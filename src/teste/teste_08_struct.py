@@ -11,16 +11,20 @@ def gerar_teste():#gera codigo de teste para variáveis do tipo struct
         ("x", "integer", 4),
         ("y", "integer", 4)
     ]) #declara a struct Ponto
-    gc.declarar_struct("Ponto2", [ #declara a struct Ponto2 com campos x2 e y2
-        ("x2", "integer", 4),
-        ("y2", "integer", 4)
-    ]) #declara a struct Ponto2
     
     gc.declarar_variavel_struct("p", "Ponto") #declara a variável p do tipo Ponto   
     
+    # p.x := 10
     gc.ldc(10) #carrega o valor 10
     gc.carregar_variavel("p") #carrega a variável p
-    gc.ldc(0) #carrega o valor 0
+    gc.ldc(0) #carrega o valor 0 (offset do campo x)
+    gc.add() #adição
+    gc.emitir("STI") #emite a instrução STI
+    
+    # p.y := 20
+    gc.ldc(20) #carrega o valor 20
+    gc.carregar_variavel("p") #carrega a variável p
+    gc.ldc(4) #carrega o valor 4 (offset do campo y)
     gc.add() #adição
     gc.emitir("STI") #emite a instrução STI
     

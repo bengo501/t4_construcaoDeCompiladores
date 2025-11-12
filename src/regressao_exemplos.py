@@ -1,9 +1,6 @@
-"""
-script de regressao para os exemplos em `exemplo/`
-varre os arquivos `teste_*.txt`, executa a funcao correspondente em `exemplos_teste`
-e compara o codigo gerado com o snapshot esperado.
-"""
-
+#script de regressao para os exemplos em `exemplo/`
+#varre os arquivos `teste_*.txt`, executa a funcao correspondente em `exemplos_teste`
+#e compara o codigo gerado com o snapshot esperado.
 from __future__ import annotations
 
 import importlib
@@ -16,7 +13,6 @@ PROJECT_ROOT = BASE_DIR.parent
 EXEMPLO_DIR = PROJECT_ROOT / "exemplo"
 EXPECTED_DIR = EXEMPLO_DIR / "expected"
 
-
 @dataclass
 class ResultadoTeste:
     nome: str
@@ -26,15 +22,11 @@ class ResultadoTeste:
     sucesso: bool
     mensagem: str = ""
 
-
-def normalizar_saida(texto: str) -> str:
-    """normaliza para comparar: remove espacos extras e usa lf."""
+def normalizar_saida(texto: str) -> str:    #normaliza para comparar: remove espacos extras e usa lf.
     linhas = [linha.rstrip() for linha in texto.strip().splitlines()]
     return "\n".join(linhas)
 
-
-def extrair_snapshot(path_txt: Path) -> str:
-    """extrai o trecho apos 'código gerado:'"""
+def extrair_snapshot(path_txt: Path) -> str:    #extrai o trecho apos 'código gerado:'
     conteudo = path_txt.read_text(encoding="utf-8")
     marcador = "código gerado:"
     if marcador not in conteudo:
@@ -44,21 +36,19 @@ def extrair_snapshot(path_txt: Path) -> str:
         raise ValueError(f"snapshot vazio em {path_txt}")
     return trecho
 
-
-def salvar_snapshot(nome: str, snapshot: str) -> None:
+def salvar_snapshot(nome: str, snapshot: str) -> None:    #salva o snapshot
     EXPECTED_DIR.mkdir(parents=True, exist_ok=True)
     destino = EXPECTED_DIR / f"{nome}.txt"
     destino.write_text(snapshot + "\n", encoding="utf-8")
 
-
-def executar_testes() -> list[ResultadoTeste]:
+def executar_testes() -> list[ResultadoTeste]:    #executa os testes
     if not EXEMPLO_DIR.exists():
         raise FileNotFoundError(f"diretorio {EXEMPLO_DIR} nao encontrado")
 
     sys.path.insert(0, str(BASE_DIR))
     modulo = importlib.import_module("exemplos_teste")
 
-    resultados: list[ResultadoTeste] = []
+    resultados: list[ResultadoTeste] = [] #lista de resultados  
     arquivos_txt = sorted(EXEMPLO_DIR.glob("teste_*.txt"))
 
     if not arquivos_txt:
@@ -129,7 +119,6 @@ def executar_testes() -> list[ResultadoTeste]:
 
     return resultados
 
-
 def main() -> int:
     print("=" * 60)
     print("regressao dos exemplos (exemplo/teste_*.txt)")
@@ -159,7 +148,6 @@ def main() -> int:
     print(f"testes falharam:  {falhas}")
 
     return 0 if falhas == 0 else 1
-
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -1,8 +1,5 @@
-"""
-exemplos de teste para cada funcionalidade
-cada função gera código de exemplo para uma funcionalidade específica
-"""
-
+#exemplos de teste para cada funcionalidade
+#cada função gera código de exemplo para uma funcionalidade específica
 import sys
 import os
 # ajusta o path dependendo de onde está o arquivo
@@ -14,8 +11,7 @@ else:
     sys.path.insert(0, '.')
 from gerador_codigo import GeradorCodigo
 
-def teste_01_expressao_atribuicao():
-    """teste: expressão de atribuição"""
+def teste_01_expressao_atribuicao():#teste 1: expressão de atribuição
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -32,8 +28,7 @@ def teste_01_expressao_atribuicao():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_02_incremento_decremento():
-    """teste: incremento e decremento"""
+def teste_02_incremento_decremento():#teste 2: incremento e decremento
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -64,8 +59,7 @@ def teste_02_incremento_decremento():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_03_operador_mais_igual():
-    """teste: operador +="""
+def teste_03_operador_mais_igual():#teste 3: operador +=
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -83,8 +77,7 @@ def teste_03_operador_mais_igual():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_04_operador_condicional():
-    """teste: operador condicional ?:"""
+def teste_04_operador_condicional():#teste 4: operador condicional ?:
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -118,8 +111,7 @@ def teste_04_operador_condicional():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_05_do_while():
-    """teste: comando do-while"""
+def teste_05_do_while():#teste 5: comando do-while
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -143,9 +135,8 @@ def teste_05_do_while():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_06_for():
-    """teste: comando for"""
-    gc = GeradorCodigo()
+def teste_06_for():#teste 6: comando for
+    gc = GeradorCodigo() #instancia o objeto GeradorCodigo
     gc.inicio_programa()
     
     gc.declarar_variavel("i", "integer", 4)
@@ -173,8 +164,7 @@ def teste_06_for():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_07_break_continue():
-    """teste: comandos break e continue"""
+def teste_07_break_continue():#teste 7: comandos break e continue
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -218,8 +208,7 @@ def teste_07_break_continue():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_08_struct():
-    """teste: variáveis do tipo struct"""
+def teste_08_struct():#teste 8: variáveis do tipo struct
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -249,8 +238,7 @@ def teste_08_struct():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_09_array_inteiros():
-    """teste: arrays de inteiros (bonus)"""
+def teste_09_array_inteiros():#teste 9: arrays de inteiros (bonus)
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -277,8 +265,7 @@ def teste_09_array_inteiros():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_10_struct_com_array():
-    """teste: struct com array (bonus)"""
+def teste_10_struct_com_array():#teste 10: struct com array (bonus)
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -334,8 +321,7 @@ def teste_10_struct_com_array():
     gc.fim_programa()
     return gc.get_codigo()
 
-def teste_11_array_de_structs():
-    """teste: array de structs (bonus completo)"""
+def teste_11_array_de_structs():#teste 11: array de structs (bonus completo)
     gc = GeradorCodigo()
     gc.inicio_programa()
     
@@ -374,25 +360,25 @@ def teste_11_array_de_structs():
 
 if __name__ == "__main__":
     print("=== teste 1: expressão de atribuição ===")
-    print(teste_01_expressao_atribuicao())
+    print(teste_01_expressao_atribuicao()) #executa o teste 1
     print("\n=== teste 2: incremento e decremento ===")
-    print(teste_02_incremento_decremento())
+    print(teste_02_incremento_decremento()) #executa o teste 2
     print("\n=== teste 3: operador += ===")
-    print(teste_03_operador_mais_igual())
+    print(teste_03_operador_mais_igual()) #executa o teste 3
     print("\n=== teste 4: operador condicional ?: ===")
-    print(teste_04_operador_condicional())
+    print(teste_04_operador_condicional()) #executa o teste 4
     print("\n=== teste 5: comando do-while ===")
-    print(teste_05_do_while())
+    print(teste_05_do_while()) #executa o teste 5
     print("\n=== teste 6: comando for ===")
-    print(teste_06_for())
+    print(teste_06_for()) #executa o teste 6
     print("\n=== teste 7: break e continue ===")
-    print(teste_07_break_continue())
+    print(teste_07_break_continue()) #executa o teste 7
     print("\n=== teste 8: struct ===")
-    print(teste_08_struct())
+    print(teste_08_struct()) #executa o teste 8
     print("\n=== teste 9: arrays de inteiros (bonus) ===")
-    print(teste_09_array_inteiros())
+    print(teste_09_array_inteiros()) #executa o teste 9
     print("\n=== teste 10: struct com array (bonus) ===")
-    print(teste_10_struct_com_array())
+    print(teste_10_struct_com_array()) #executa o teste 10
     print("\n=== teste 11: array de structs (bonus completo) ===")
-    print(teste_11_array_de_structs())
+    print(teste_11_array_de_structs()) #executa o teste 11
 
